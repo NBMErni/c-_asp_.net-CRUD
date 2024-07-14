@@ -1,0 +1,54 @@
+﻿<! EmployeeInfo(name of the project)-->
+@model List<EmployeeInfo>
+@{
+}
+
+
+<h2>Employee List</h2>
+
+<div class="row mb-5">
+ 
+    <div class="col">
+        <button type="button" class="btn btn-primary addBtn" data-bs-toggle="modal" data-bs-target="#exampleModal" asp-controller="employee" asp-action="Create">
+            Add Employee
+        </button>
+    </div>
+</div>
+
+
+@Html.Partial("_AddModal")
+
+
+<table class="table table-striped">
+    <thead class="bg-info text-white">
+        <tr class="text-center">
+            <th>employee#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Birthdate</th>
+            <th>Position</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr class="text-center">
+                <td>@employee.Id</td>
+                <td>@employee.first_name</td>
+                <td>@employee.last_name</td>
+                <td>@employee.email</td>
+                <td>@employee.gender</td>
+                <td>@employee.birth_date</td>
+                <td>@employee.position</td>
+                <td>
+                    <a class="btn btn-warning text-white" asp-controller="EmployeeInfo" asp-action="Edit" asp-route-id="@employee.Id">Edit</a>
+                    <a class="btn btn-danger text-white" asp-controller="EmployeeInfo" asp-action="Delete" asp-route-id="@employee.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
