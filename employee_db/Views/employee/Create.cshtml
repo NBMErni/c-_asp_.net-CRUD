@@ -1,0 +1,81 @@
+﻿@model EmployeeDto
+@{
+}
+
+<div class="row container">
+    <div class="row mb-3 mx-auto rounded border p-3">
+        <h2 class="text-center mb-5 ">Add Employee</h2>
+
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">First Name</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="first_name" type="text" placeholder="Enter your first name" />
+                    <span asp-validation-for="first_name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Last Name</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="last_name" type="text" placeholder="Enter your last name" />
+                    <span asp-validation-for="last_name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Gender</label>
+                <div class="col-sm-8">
+                    <select class="form-select" asp-for="gender">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Prefer not to say</option> 
+                    </select>
+                    <span asp-validation-for="gender" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Birthdate</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="birth_date" type="date" />
+                    <span asp-validation-for="birth_date" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Email Address</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="email" type="email" placeholder="Enter your email address" />
+                    <span asp-validation-for="email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Position</label>
+                <div class="col-sm-8">
+                    <select class="form-select" asp-for="position">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="CEO">CEO</option>
+                        <option value="Senior">Senior Developer</option>
+                        <option value="Mid">Mid Developer</option>
+                        <option value="Junior">Junior Developer</option>
+                        <option value="Trainee">Trainee</option> 
+                    </select>
+                    <span asp-validation-for="position" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" asp-action="Index" asp-controller="Products" role="button">Cancel</a>
+                </div>
+            </div>
+        </form>
+
+    </div>

@@ -2,10 +2,8 @@
 
 namespace employee_db.Models
 {
-    public class EmployeeInfo
+    public class EmployeeDto
     {
-        public int Id { get; set; }
-
         [Required, MaxLength(30)]
         public string first_name { get; set; } = "";
 
@@ -18,11 +16,10 @@ namespace employee_db.Models
         [Required]
         public string birth_date { get; set; } = "";
 
-        [Required ,MaxLength(30)]
+        [Required, MaxLength(30)]
         public string email { get; set; } = "";
 
         [Required]
         public string position { get; set; } = "";
     }
-
 }

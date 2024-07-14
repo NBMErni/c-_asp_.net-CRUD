@@ -2,22 +2,16 @@
 @model List<EmployeeInfo>
 @{
 }
-
-
 <h2>Employee List</h2>
 
-<div class="row mb-5">
+<div class="row mb-3">
  
     <div class="col">
-        <button type="button" class="btn btn-primary addBtn" data-bs-toggle="modal" data-bs-target="#exampleModal" asp-controller="employee" asp-action="Create">
+        <a type="button" class="btn btn-primary mt-3" asp-controller="Employee" asp-action="Create">
             Add Employee
-        </button>
+        </a>
     </div>
 </div>
-
-
-@Html.Partial("_AddModal")
-
 
 <table class="table table-striped">
     <thead class="bg-info text-white">
@@ -44,8 +38,8 @@
                 <td>@employee.birth_date</td>
                 <td>@employee.position</td>
                 <td>
-                    <a class="btn btn-warning text-white" asp-controller="EmployeeInfo" asp-action="Edit" asp-route-id="@employee.Id">Edit</a>
-                    <a class="btn btn-danger text-white" asp-controller="EmployeeInfo" asp-action="Delete" asp-route-id="@employee.Id">Delete</a>
+                    <a class="btn btn-warning text-white" asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.Id">Edit</a>
+                    <a class="btn btn-danger text-white" asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.Id" onclick="return confirm('Are you sure you want to delete this data?');">Delete</a>
                 </td>
             </tr>
         }
