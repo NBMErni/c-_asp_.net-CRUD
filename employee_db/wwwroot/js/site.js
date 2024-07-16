@@ -10,9 +10,7 @@ $(() => {
     $("#birth_date").val(today);
 
     $("#data-tables").DataTable({
-
- 
-
+       responsive: true,
         ajax: {
             url: 'https://localhost:7047/employees/',
             dataSrc: ''
@@ -54,18 +52,16 @@ $(() => {
             {
                 targets: 4,
                 render: function (data, type, row) {
-                    return `<a class="btn btn-warning text-white" href="/Employee/Edit/${row.id}">Edit</a>
+                    return `<a class="btn btn-primary text-white" href="/Employee/Edit/${row.id}">Edit</a>
                     <a class="btn btn-danger text-white" href="javascript:void(0);" onclick="handleDeleteEmployee(${row.id})">Delete</a>`
                 }
             },
         ]
  
     });
+
    
 })
-
-
-
 
 const  handleDeleteEmployee = (id) => {
     if (confirm("Are you sure you want to delete this employee?")) {

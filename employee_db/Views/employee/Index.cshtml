@@ -7,7 +7,7 @@
         <h2>Employee List</h2>
     </div>
     <div class="col d-flex justify-content-end">
-        <a type="button" class="btn btn-primary mt-3" asp-controller="Employee" asp-action="Create">
+        <a type="button" class="btn btn-success mt-3" asp-controller="Employee" asp-action="Create">
             <i class="fa-solid fa-plus"></i> Add Employee
         </a>
     </div>
@@ -15,7 +15,7 @@
 
 
 
-<table  id="data-tables">
+<table class="table table-responsive" id="data-tables">
     <thead class="bg-info text-white">
         <tr class="text-center">
             <th>Name</th>
@@ -30,5 +30,3 @@
         <!-- Data tables-->
     </tbody>
 </table>
-
-<a class="btn btn-warning text-white" asp-controller="Employee" asp-action="Edit" >Edit</a>
