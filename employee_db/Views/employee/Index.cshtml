@@ -1,48 +1,34 @@
-﻿<! EmployeeInfo(name of the project)-->
-@model List<EmployeeInfo>
+﻿@model List<EmployeeInfo>
 @{
 }
-<h2>Employee List</h2>
 
-<div class="row mb-3">
- 
+<div class="row  mb-3 justify-content-center align-items-center">
     <div class="col">
+        <h2>Employee List</h2>
+    </div>
+    <div class="col d-flex justify-content-end">
         <a type="button" class="btn btn-primary mt-3" asp-controller="Employee" asp-action="Create">
-            Add Employee
+            <i class="fa-solid fa-plus"></i> Add Employee
         </a>
     </div>
 </div>
 
-<table class="table table-striped">
+
+
+<table  id="data-tables">
     <thead class="bg-info text-white">
         <tr class="text-center">
-            <th>employee#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>Name</th>
             <th>Gender</th>
             <th>Birthdate</th>
             <th>Position</th>
             <th>Action</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var employee in Model)
-        {
-            <tr class="text-center">
-                <td>@employee.Id</td>
-                <td>@employee.first_name</td>
-                <td>@employee.last_name</td>
-                <td>@employee.email</td>
-                <td>@employee.gender</td>
-                <td>@employee.birth_date</td>
-                <td>@employee.position</td>
-                <td>
-                    <a class="btn btn-warning text-white" asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.Id">Edit</a>
-                    <a class="btn btn-danger text-white" asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.Id" onclick="return confirm('Are you sure you want to delete this data?');">Delete</a>
-                </td>
-            </tr>
-        }
+    <tbody class="text-center">
+
+        <!-- Data tables-->
     </tbody>
 </table>
 
+<a class="btn btn-warning text-white" asp-controller="Employee" asp-action="Edit" >Edit</a>

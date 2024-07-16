@@ -11,7 +11,7 @@ using employee_db.Services;
 namespace employeedb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240713153520_FirstMigration")]
+    [Migration("20240715053532_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace employeedb.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("employee_db.Models.employee_info", b =>
+            modelBuilder.Entity("employee_db.Models.EmployeeInfo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,13 +38,11 @@ namespace employeedb.Migrations
 
                     b.Property<string>("email")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("first_name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("gender")
                         .IsRequired()
@@ -52,8 +50,7 @@ namespace employeedb.Migrations
 
                     b.Property<string>("last_name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("position")
                         .IsRequired()
@@ -61,7 +58,7 @@ namespace employeedb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("employee");
+                    b.ToTable("Employee");
                 });
 #pragma warning restore 612, 618
         }

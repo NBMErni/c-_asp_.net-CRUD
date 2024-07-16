@@ -17,9 +17,22 @@ namespace employee_db.Controllers
         }
         public IActionResult Index()
         {
-            var employees = context.Employee.OrderByDescending(e => e.Id).ToList();
-            return View(employees);
+            return View();
         }
+
+        [HttpGet("employees")]
+        public IActionResult GetEmployees()
+        {
+            var employees = context.Employee.ToList();
+
+            var employeesJson = System.Text.Json.JsonSerializer.Serialize(employees);
+            System.Diagnostics.Debug.WriteLine("Employee DB TO >>>>> " + employeesJson);
+
+            //return Content(employeesJson, "application/json");
+            return Json(employees);
+        }
+
+
 
         public IActionResult Create()
         {
@@ -43,7 +56,8 @@ namespace employee_db.Controllers
                 gender = EmployeeDto.gender,
                 birth_date = EmployeeDto.birth_date,
                 email = EmployeeDto.email,
-                position = EmployeeDto.position
+                position = EmployeeDto.position,
+             
             };
 
             // passing the emp_data to DB and saving it
@@ -68,7 +82,7 @@ namespace employee_db.Controllers
                 last_name = employee.last_name,
                 gender = employee.gender,
                 birth_date = employee.birth_date,
-                email = employee.email, 
+                email = employee.email,
                 position = employee.position
 
             };
@@ -78,6 +92,7 @@ namespace employee_db.Controllers
 
             return View(employeeDto);
         }
+
 
         [HttpPost]
         public IActionResult Edit(int id, EmployeeDto EmployeeDto)
@@ -89,10 +104,10 @@ namespace employee_db.Controllers
                 return RedirectToAction("Index", "Employee");
             }
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 ViewData["employee_id"] = employee.Id;
-               
+
 
                 return View(EmployeeDto);
             }
@@ -111,6 +126,7 @@ namespace employee_db.Controllers
 
         }
 
+        [HttpDelete("delete-employee/{id:int}")]
         public IActionResult Delete(int id)
         {
             var employee = context.Employee.Find(id);
@@ -119,7 +135,7 @@ namespace employee_db.Controllers
                 return RedirectToAction("Index", "Employee");
             }
 
-           
+
 
             context.Employee.Remove(employee);
             context.SaveChanges(true);

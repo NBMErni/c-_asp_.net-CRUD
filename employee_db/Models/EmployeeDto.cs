@@ -21,5 +21,6 @@ namespace employee_db.Models
 
         [Required]
         public string position { get; set; } = "";
-    }
+
+     }
 }

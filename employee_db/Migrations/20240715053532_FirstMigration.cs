@@ -11,21 +11,21 @@ namespace employeedb.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "employee",
+                name: "Employee",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    firstname = table.Column<string>(name: "first_name", type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    lastname = table.Column<string>(name: "last_name", type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    firstname = table.Column<string>(name: "first_name", type: "nvarchar(max)", nullable: false),
+                    lastname = table.Column<string>(name: "last_name", type: "nvarchar(max)", nullable: false),
                     gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     birthdate = table.Column<string>(name: "birth_date", type: "nvarchar(max)", nullable: false),
-                    email = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     position = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_employee", x => x.Id);
+                    table.PrimaryKey("PK_Employee", x => x.Id);
                 });
         }
 
@@ -33,7 +33,7 @@ namespace employeedb.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "employee");
+                name: "Employee");
         }
     }
 }
